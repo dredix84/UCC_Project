@@ -1,0 +1,1 @@
+ErrorDocument 404 "<center><H1>Sorry but the page you are looking for does now exist.</H1><a href='index.php'>Click here to go back the to main page.</a><br><img src='images/404.png' style=' border-radius:80px; width: 400px' /></center><script>window.location = 'index.php?route=404';</script>"

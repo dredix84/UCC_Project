@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TwilioResponse>
+    <SMSMessage>
+        <Sid>SM0ab15a14bca78fa582ed7a509f0bde31</Sid>
+        <AccountSid>AC4bf2dafb92341f7caf8650403e422d23</AccountSid>
+        <DateCreated>Fri, 08 Jan 2010 11:46:42 -0800</DateCreated>
+        <DateUpdated>Fri, 08 Jan 2010 11:46:42 -0800</DateUpdated>
+        <DateSent/>
+        <To>4158675309</To>
+        <From>YYYYYYYYYY</From>
+        <Body>Bad news Johnny, the server is down and it needs your help</Body>
+        <Status>queued</Status>
+        <Flags>4</Flags>
+        <Price/>
+    </SMSMessage>
+</TwilioResponse>
