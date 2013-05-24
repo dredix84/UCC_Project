@@ -1,4 +1,6 @@
 <?php
+	session_checkstart();
+
 	if(isset($_REQUEST["rtoken"]) && isset($_SESSION["rtoken"]) && $_SESSION["rtoken"] == $_REQUEST["rtoken"]){
 
 $nowcat = "";
@@ -14,7 +16,7 @@ if(isset($grights)){
 
 $db->query("SELECT DISTINCT category FROM rights");
 ?>
-<form action="index.php">
+<form action="index.php" method="post">
 <input type="submit" value="Save Rights" />
 <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>" />
 <input type="hidden" name="action" value="save_rights" />

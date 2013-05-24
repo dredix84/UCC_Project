@@ -10,6 +10,8 @@ function loadroute($routename){
 	global $db, $f_return;
 	if(DODEBUG){global $odb;};
 	
+	session_checkstart();
+	
 	$outval = false;
 	if(isset($_REQUEST["pagetype"]) && $_REQUEST["pagetype"] == "ajax"){
 		//Is an AJAX page
@@ -33,6 +35,7 @@ function loadroute($routename){
 		if(file_exists("views/".$routename.".php")){
 			ob_start();
 			include("theme/top.php");
+			include("theme/notify.php");
 			include("views/".$routename.".php");
 			if ($db->debug){$db->show_debug_console();}
 			include("theme/bottom.php");
@@ -250,4 +253,22 @@ function calevent($project_id, $title, $description){
 	$ce["created_by"] = $_SESSION["userinfo"]["id"];
 	
 	$db->insert('calendar_events',$ce);
+}
+
+function addmsg($message, $type = 'i'){
+	$_SESSION["notify"][$type][] =  $message;
+}
+
+function hasright($rightname){
+	//Used to check if the user has a specific permission
+	$outval = false;
+	if(isset($_SESSION["userinfo"]["user_rights"])){
+		if(count($_SESSION["userinfo"]["user_rights"]) > 0){
+			if(in_array($rightname,$_SESSION["userinfo"]["user_rights"])){
+				$outval = true;
+			}
+		}
+	}
+	
+	return $outval;
 }

@@ -658,7 +658,7 @@ function select_req(id){
       
 	//  load() functions  
     var loadUrl = "index.php?route=req_info&pagetype=ajax&req_id=" + id; 
-	var loadUrl2 = "index.php?route=req_details&pagetype=ajax&req_id=" + id;   
+	var loadUrl2 = "index.php?route=req_details&pagetype=ajax&req_id=" + id + "&pid=<?=(isset($_REQUEST["id"])?$_REQUEST["id"]:"")?>";   
     
 	$("#req_info").html(ajax_load).load(loadUrl); 
 	$("#req_details")

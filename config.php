@@ -13,7 +13,7 @@
 	define('DBHOST', "localhost");*/
 	
 	//Debug
-	define('DODEBUG', true);
+	define('DODEBUG', false);
 	
 	$smscfg = array(
 		"sid" 	=> 	"AC6ef6b066192af1171c7469968ac5c271",

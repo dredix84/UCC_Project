@@ -8,6 +8,8 @@
 	if(!isset($_REQUEST["notoken"])){
 		$_SESSION["rtoken"] = RandomString();
 	}
+	
+	
 
 $opts['hn'] = DBHOST;
 $opts['un'] = DBUSER;
@@ -112,16 +114,16 @@ appear in generated list. Here are some most used field options documented.
   This is useful for giving more meaning to column values. Multiple
   descriptions fields are also possible. Check documentation for this.
 */
-
+//die($_SESSION["rtoken"]);
+$rtoken = $_SESSION["rtoken"];
 $opts['fdd']['id'] = array(
   'name'     => 'Rights',
   'select'   => 'T',
   'options'  => 'LH', // auto increment
   'maxlen'   => 10,
   'default'  => '0',
-  'sort'     => true,
-  'URL'		 => 'index.php?route=group_rights&id=$value&pagetype=ajax&rtoken=' . $_SESSION["rtoken"],
-  'URLdisp'	 => "<img src=\"images/ticket.png\" /> View/Edit Right $value",
+  'URL'		 => 'index.php?route=group_rights&id=$value&pagetype=ajax&rtoken=' . $rtoken,
+  'URLdisp'	 => '<img src=\"images/ticket.png\" /> View/Edit Right',
   'css'		 => array('postfix' => ' rights_diag'),
   'escape'	 => false
 );
@@ -183,7 +185,7 @@ $opts['fdd']['status'] = array(
 );
 
 //new phpMyEdit($opts);
-
+//
 ?>
 <div class="box grid_12">
     <div class="box-head">

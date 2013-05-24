@@ -44,5 +44,20 @@
 			$f_return = $_REQUEST["f_return"]."&req_id=".$_REQUEST["req_id"];
 		}		
 	}
+	
+	
+	if(isset($_REQUEST["seek_apprv"])){
+		$db->query('UPDATE requisition SET seeking_approval = now() WHERE id = ' . $_REQUEST["req_id"]);	
+		if($db->affected_rows > 0){
+			 addmsg("The requisition has been sent for approval.", "g");
+		}
+	}
+	
+	if(isset($_REQUEST["req_apprv"])){
+		$db->query('UPDATE requisition SET authorized_date = now(), req_authorize_init = '.$_SESSION["userinfo"]["id"].' WHERE id = ' . $_REQUEST["req_id"]);	
+		if($db->affected_rows > 0){
+			 addmsg("The requisition has not been approved.", "g");
+		}
+	}
 
 	

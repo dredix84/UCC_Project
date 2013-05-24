@@ -61,8 +61,18 @@ FROM requisition r
                 <div class="form-item"><?=$req["date_delivery_required"]?></div>
             </div>
         </div>
-        <div style="clear:both"></div>
         
+        
+        
+        <div style="float: left; margin-right:10px; min-width: 100px;">
+        	<?php if(strlen($req["seeking_approval"]) > 0 && strlen($req["authorized_date"]) == 0 &&  hasright("req_apprv_Requisition")){ ?>
+            <a class="button green" href="index.php?route=home&id=<?=$_REQUEST["pid"]?>&req_id=<?=$_REQUEST["req_id"]?>&req_apprc=true"><img src="img/icons/basic/tick_button.png" alt="" /> Approve Requisition</a>
+
+            
+            <?php } ?>
+        </div>
+        
+        <div style="clear:both"></div>
         <?php
 		//print_r($records);
 	}

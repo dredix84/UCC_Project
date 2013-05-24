@@ -11,11 +11,15 @@ $db->connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
 
 if(isset($_POST["name"]) && isset($_POST["pass"])){
-	$db->query("SELECT * FROM users WHERE username = '".$db->escape($_POST["name"])."' AND password = md5('".$db->escape($_POST["pass"])."')");
+	$db->query("SELECT *,
+(SELECT rights FROM user_groups g WHERE g.id = u.usergroup_id) as user_rights
+FROM users u 
+WHERE u.username = '".$db->escape($_POST["name"])."' AND u.password = md5('".$db->escape($_POST["pass"])."')");
 	$records = $db->fetch_assoc_all();
 	if(count($records)){
 		session_checkstart();
 		$_SESSION["userinfo"] = $records[0];
+		$_SESSION["userinfo"]["user_rights"] = json_decode($_SESSION["userinfo"]["user_rights"]);
 		//die(print_r($_SESSION["userinfo"],true));
 		session_write_close();
 		header("location:index.php?route=home");

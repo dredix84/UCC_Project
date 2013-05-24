@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	session_checkstart();
 ?><!doctype html>
 <html lang="en">
 
@@ -69,6 +69,8 @@
          <li class="nav-item">
            <a href="index.php"><img src="img/nav/dashboard.png" alt="" /><p>Dashboard</p></a>
          </li>
+         
+         <?php if(hasright("v_User") && hasright("v_User Group")){ ?>
          <li class="nav-item">
            <a href="index.php?route=users"><img src="img/nav/user_male.png" alt="" /><p>Users</p></a>
            <ul class="sub-nav">
@@ -76,6 +78,8 @@
             <li><a href="index.php?route=user_groups">User Groups</a></li>
           </ul>
          </li>
+         <?php } ?>
+         
          <li class="nav-item">
             <a href="#"><img src="img/nav/settings.png" alt="" /><p>Setups</p></a>
             <ul class="sub-nav">

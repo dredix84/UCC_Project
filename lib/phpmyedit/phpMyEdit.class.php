@@ -2378,7 +2378,7 @@ function '.$this->js['prefix'].'filter_handler(theForm, theEvent)
 						$printed_out = false;
 						if ($this->view_enabled()) {
 							$printed_out = true;
-							echo '<a class="',$css_class_name,' view_img" href="',$viewQuery,'"><img class="';
+							echo '<a class="',$css_class_name,'" href="',$viewQuery,'"><img class="';
 							echo $css_class_name,'" src="',$this->url['images'];
 							echo 'pme-view.png" height="15" width="16" border="0" ';
 							echo 'alt="',$viewTitle,'" title="',$viewTitle,'" /></a>';
